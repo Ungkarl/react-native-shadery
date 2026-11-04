@@ -3874,10 +3874,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/slider@npm:5.2.1":
-  version: 5.2.1
-  resolution: "@react-native-community/slider@npm:5.2.1"
-  checksum: 10c0/10be48249573540d90a2b6f0bba2bdadd58043767236492211eb836dc96b6fe875e430b870f331e65473c36c92aed812cd31a6627e01c97ddd5b2bd5bfee570f
+"@react-native-community/slider@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@react-native-community/slider@npm:5.2.2"
+  checksum: 10c0/8e55d5b89e9c9234b80206b33f3b4c05ca22552a8cddd2fbfdeb523b48053c627e42ea230925c5ca29f861eaa62d153fc464d616fab4231d8536419ec48fd9f6
   languageName: node
   linkType: hard
 
@@ -11749,7 +11749,7 @@ __metadata:
   resolution: "react-native-shadery-example@workspace:example"
   dependencies:
     "@expo/metro-runtime": "npm:~58.0.17"
-    "@react-native-community/slider": "npm:5.2.1"
+    "@react-native-community/slider": "npm:5.2.2"
     "@shopify/react-native-skia": "npm:2.14.0"
     expo: "npm:~58.0.23"
     expo-constants: "npm:~58.0.15"

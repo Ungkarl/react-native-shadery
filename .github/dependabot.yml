@@ -10,3 +10,21 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: development
+    # Expo Go ships fixed versions of these. They move together with the Expo SDK
+    # (`yarn example expo install --fix`), never one at a time.
+    ignore:
+      - dependency-name: "react"
+      - dependency-name: "react-dom"
+      - dependency-name: "react-native"
+      - dependency-name: "react-native-web"
+      - dependency-name: "expo"
+      - dependency-name: "expo-*"
+      - dependency-name: "@expo/*"
+      - dependency-name: "@react-native/*"
+      - dependency-name: "@shopify/react-native-skia"
+      - dependency-name: "react-native-reanimated"
+      - dependency-name: "react-native-worklets"
+      - dependency-name: "react-native-screens"
+      - dependency-name: "react-native-safe-area-context"
+      - dependency-name: "@react-native-community/slider"
+      - dependency-name: "canvaskit-wasm"

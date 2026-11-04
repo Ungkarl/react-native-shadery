@@ -34,6 +34,9 @@ yarn example web
 yarn example start     # just the packager; scan the QR code with Expo Go on a phone
 ```
 
+If Expo CLI can't open the iOS simulator itself, boot one (`xcrun simctl boot "iPhone 18 Pro"`) or
+run `yarn example start` and open the `exp://` URL in Expo Go.
+
 The example may only use libraries that ship inside Expo Go. Check before adding anything new.
 
 `/dev/hello-shader` is an internal smoke test (an animated gradient with a pause toggle) that

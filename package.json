@@ -95,7 +95,7 @@
     "react-native": "0.88.1",
     "react-native-builder-bob": "^0.44.1",
     "react-native-reanimated": "4.7.1",
-    "react-native-worklets": "0.13.0",
+    "react-native-worklets": "0.13.1",
     "release-it": "^21.1.2",
     "turbo": "^2.11.10",
     "typescript": "^6.0.3"

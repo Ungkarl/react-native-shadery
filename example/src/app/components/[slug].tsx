@@ -1,7 +1,7 @@
 import { Link, Stack, useLocalSearchParams } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
-import { findDemo } from '../registry';
-import { colors, font, spacing } from '../theme';
+import { findDemo } from '../../registry';
+import { colors, font, spacing } from '../../theme';
 
 export default function Playground() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -12,8 +12,8 @@ export default function Playground() {
       <View style={styles.notFound}>
         <Stack.Screen options={{ title: 'Not found' }} />
         <Text style={styles.title}>No component called “{slug}”.</Text>
-        <Link href="/" style={styles.link}>
-          ← Back to the gallery
+        <Link href="/components" style={styles.link}>
+          ← Back to the list
         </Link>
       </View>
     );

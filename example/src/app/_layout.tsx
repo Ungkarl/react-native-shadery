@@ -8,16 +8,15 @@ export default function RootLayout() {
       <StatusBar style="light" />
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: colors.background },
-          headerTintColor: colors.text,
-          headerShadowVisible: false,
+          headerShown: false,
           contentStyle: { backgroundColor: colors.background },
         }}
       >
-        <Stack.Screen name="index" options={{ title: 'Shadery' }} />
+        <Stack.Screen name="index" />
+        {/* The component browser: its own stack, shown as a full-screen modal. */}
         <Stack.Screen
-          name="dev/hello-shader"
-          options={{ title: 'Hello shader' }}
+          name="components"
+          options={{ presentation: 'fullScreenModal' }}
         />
       </Stack>
     </>

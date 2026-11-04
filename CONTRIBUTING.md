@@ -39,8 +39,15 @@ run `yarn example start` and open the `exp://` URL in Expo Go.
 
 The example may only use libraries that ship inside Expo Go. Check before adding anything new.
 
-`/dev/hello-shader` is an internal smoke test (an animated gradient with a pause toggle) that
-proves Skia + Reanimated + the shared core work. It is linked from the gallery's empty state.
+App structure (Expo Router, routes in `example/src/app/`):
+
+- `/` — front page.
+- `/components` — full-screen modal with its own stack: the component list, grouped by
+  category from `example/src/registry.ts`.
+- `/components/<slug>` — the playground for one component, pushed inside the modal.
+- `/components/dev/hello-shader` — internal smoke test (an animated gradient with a pause
+  toggle) proving Skia + Reanimated + the shared core work. Listed under "Dev tools" in
+  development builds only.
 
 > Fast Refresh after editing SkSL can occasionally leave a canvas blank. Reload the app (`r` in
 > the packager) before treating that as a bug.
@@ -116,7 +123,7 @@ example/src/demos/GlowBorderThumbnail.tsx
    }
    ```
 2. `src/index.ts` → `export * from './components/glow-border';`
-3. `example/src/registry.ts` → add the `DemoEntry`.
+3. `example/src/registry.ts` → add the `DemoEntry` (with its `category`).
 4. README → add a row to the Components table + a usage snippet + its props table.
 
 ### Definition of done

@@ -7,12 +7,12 @@ import {
   createLazyShader,
   useShaderClock,
 } from 'react-native-shadery';
-import { helloSksl } from '../../dev/helloSksl';
-import { ControlPanel } from '../../playground/ControlPanel';
-import { ResetButton } from '../../playground/ResetButton';
-import { SliderControl } from '../../playground/SliderControl';
-import { ToggleControl } from '../../playground/ToggleControl';
-import { spacing } from '../../theme';
+import { helloSksl } from '../../../dev/helloSksl';
+import { ControlPanel } from '../../../playground/ControlPanel';
+import { ResetButton } from '../../../playground/ResetButton';
+import { SliderControl } from '../../../playground/SliderControl';
+import { ToggleControl } from '../../../playground/ToggleControl';
+import { spacing } from '../../../theme';
 
 const getHelloShader = createLazyShader(helloSksl);
 

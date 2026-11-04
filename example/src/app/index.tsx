@@ -1,100 +1,60 @@
-import { Link } from 'expo-router';
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from 'react-native';
-import { DEMOS } from '../registry';
-import type { DemoEntry } from '../registry';
+import { router } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, font, radius, spacing } from '../theme';
 
-const TABLET_WIDTH = 768;
+/** Front page. Placeholder content until the first components land. */
+export default function Home() {
+  const insets = useSafeAreaInsets();
 
-function DemoCard({ demo }: { demo: DemoEntry }) {
-  const { Thumbnail } = demo;
   return (
-    <Link href={`/${demo.slug}`} asChild>
+    <View
+      style={[
+        styles.screen,
+        {
+          paddingTop: insets.top + spacing.xl,
+          paddingBottom: insets.bottom + spacing.md,
+        },
+      ]}
+    >
+      <View style={styles.hero}>
+        <Text style={styles.title}>Shadery</Text>
+        <Text style={styles.tagline}>
+          GPU shader components for React Native.
+        </Text>
+        <Text style={styles.placeholder}>
+          Placeholder: a live hero shader and a short intro go here once the
+          first components are built.
+        </Text>
+      </View>
+
       <Pressable
-        style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+        onPress={() => router.push('/components')}
+        accessibilityRole="button"
+        style={({ pressed }) => [styles.button, pressed && styles.pressed]}
       >
-        <View style={styles.thumbnail}>
-          <Thumbnail />
-        </View>
-        <View style={styles.cardText}>
-          <Text style={styles.name}>{demo.name}</Text>
-          <Text style={styles.description}>{demo.description}</Text>
-        </View>
+        <Text style={styles.buttonText}>Browse components</Text>
       </Pressable>
-    </Link>
-  );
-}
-
-function EmptyState() {
-  return (
-    <View style={styles.empty}>
-      <Text style={styles.emptyTitle}>No components yet.</Text>
-      <Text style={styles.description}>
-        Add one in <Text style={styles.code}>example/src/registry.ts</Text>.
-      </Text>
-      <Link href="/dev/hello-shader" style={styles.link}>
-        Open the hello-shader smoke test →
-      </Link>
     </View>
   );
 }
 
-export default function Gallery() {
-  const { width } = useWindowDimensions();
-  const columns = width >= TABLET_WIDTH ? 2 : 1;
-
-  return (
-    <FlatList
-      // Changing numColumns on the fly requires a fresh list.
-      key={columns}
-      numColumns={columns}
-      data={DEMOS}
-      keyExtractor={(demo) => demo.slug}
-      renderItem={({ item }) => <DemoCard demo={item} />}
-      ListEmptyComponent={EmptyState}
-      contentContainerStyle={styles.list}
-      columnWrapperStyle={columns > 1 ? styles.columns : undefined}
-      contentInsetAdjustmentBehavior="automatic"
-    />
-  );
-}
-
 const styles = StyleSheet.create({
-  list: { padding: spacing.md, gap: spacing.md },
-  columns: { gap: spacing.md },
-  card: {
+  screen: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.md,
+    paddingHorizontal: spacing.lg,
+    justifyContent: 'space-between',
+  },
+  hero: { gap: spacing.md },
+  title: { fontSize: 40, fontWeight: '700', color: colors.text },
+  tagline: { fontSize: 20, color: colors.text },
+  placeholder: { ...font.body, color: colors.textSecondary, lineHeight: 22 },
+  button: {
+    backgroundColor: colors.accent,
     borderRadius: radius.md,
-    backgroundColor: colors.card,
-  },
-  cardPressed: { backgroundColor: colors.cardPressed },
-  thumbnail: {
-    width: 72,
-    height: 72,
+    paddingVertical: spacing.md,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  cardText: { flex: 1, gap: spacing.xs },
-  name: { ...font.title, color: colors.text },
-  description: { ...font.caption, color: colors.textSecondary },
-  empty: {
-    padding: spacing.lg,
-    borderRadius: radius.md,
-    backgroundColor: colors.card,
-    gap: spacing.sm,
-  },
-  emptyTitle: { ...font.title, color: colors.text },
-  code: { fontFamily: 'Menlo', color: colors.text },
-  link: { ...font.body, color: colors.accent, marginTop: spacing.sm },
+  pressed: { opacity: 0.8 },
+  buttonText: { ...font.title, color: colors.background },
 });

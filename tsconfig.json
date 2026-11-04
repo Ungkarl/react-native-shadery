@@ -2,7 +2,8 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-shadery": ["./src/index"]
+      "react-native-shadery": ["./src/index"],
+      "react-native-shadery/*": ["./src/components/*"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

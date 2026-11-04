@@ -32,6 +32,19 @@ jobs:
         run: yarn typecheck
 
 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run unit tests
+        run: yarn test --maxWorkers=2 --coverage
+
   build-library:
     runs-on: ubuntu-latest
 
@@ -62,8 +75,10 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ env.TURBO_CACHE_DIR }}
-          key: ${{ runner.os }}-turborepo-android-${{ hashFiles('yarn.lock') }}
+          # Caches are immutable, so key each run by commit and restore the newest match.
+          key: ${{ runner.os }}-turborepo-android-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
           restore-keys: |
+            ${{ runner.os }}-turborepo-android-${{ hashFiles('yarn.lock') }}-
             ${{ runner.os }}-turborepo-android-
 
       - name: Check turborepo cache for Android
@@ -128,8 +143,10 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ env.TURBO_CACHE_DIR }}
-          key: ${{ runner.os }}-turborepo-ios-${{ hashFiles('yarn.lock') }}
+          # Caches are immutable, so key each run by commit and restore the newest match.
+          key: ${{ runner.os }}-turborepo-ios-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
           restore-keys: |
+            ${{ runner.os }}-turborepo-ios-${{ hashFiles('yarn.lock') }}-
             ${{ runner.os }}-turborepo-ios-
 
       - name: Check turborepo cache for iOS
